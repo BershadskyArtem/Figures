@@ -23,13 +23,16 @@ public class FiguresSolver
                 x => x
                     .GetConstructors()
                     .Any(
-                        cif => cif.GetParameters().Length == 1))
+                        cif => cif.GetParameters().Length == args.Length))
             .ToList();
 
         if (!matches.Any())
             throw new ArgumentException("Unable to retrieve a type of this figure");
 
-        var o = matches.Select(x => Activator.CreateInstance(x, new object[] { args.Length })).Cast<IFigure>();
+
+        var objArgs = args.Cast<object>().ToArray();
+
+        var o = matches.Select(x => Activator.CreateInstance(x, objArgs )).Cast<IFigure>();
 
         var orderedMatches = o.OrderBy(b => b.GetSimilarityCoefficient());
 

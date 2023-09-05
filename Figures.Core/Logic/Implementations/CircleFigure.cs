@@ -9,12 +9,15 @@ public class CircleFigure : IFigure
 
     public CircleFigure(double radius)
     {
+        if (radius < 0)
+            throw new ArgumentException("Radius cannot be less then zero");
+        
         _radius = radius;
     }
 
     public double GetArea()
     {
-        return 2 * Math.PI * _radius;
+        return Math.PI * _radius * _radius;
     }
 
     public double GetSimilarityCoefficient()
