@@ -1,5 +1,5 @@
-﻿using Figures.Core.Logic.Extensions;
-using Figures.Core.Logic.Implementations;
+﻿using Figures.Core.Logic.Implementations;
+using Figures.Core.Logic.Solver;
 
 FiguresSolver solver = new FiguresSolver();
 

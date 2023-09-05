@@ -1,6 +1,7 @@
 ﻿using Figures.Core.Logic.Abstractions;
+using Figures.Core.Logic.Implementations;
 
-namespace Figures.Core.Logic.Extensions;
+namespace Figures.Core.Logic.Solver;
 
 public class FiguresSolver
 {
@@ -15,6 +16,16 @@ public class FiguresSolver
         if (_registeredFigures.Contains(typeof(T)))
             return;
         _registeredFigures.Add(typeof(T));
+    }
+
+    public double FigureOutFigureByArgsCompTime(double arg)
+    {
+        return new CircleFigure(arg).GetArea();
+    }
+    
+    public double FigureOutFigureByArgsCompTime(double arg, double arg2, double arg3)
+    {
+        return new TriangleFigure(arg, arg2, arg3).GetArea();
     }
     
     /// <summary>
@@ -32,6 +43,7 @@ public class FiguresSolver
             throw new ArgumentException("Not enough arguments to figure out this figure");
         
         //Find every type with constructor that has the same number of parameters as args.Length.
+        //This process can be CACHED when registering type, but type can have more than one constructor with different number of arguments so this will become problematic IMO.  
         var matches = _registeredFigures
             .Where(
                 x => x
@@ -61,5 +73,9 @@ public class FiguresSolver
         
         return theOne.GetArea();
     }
+    
+    
+    
+    
     
 }

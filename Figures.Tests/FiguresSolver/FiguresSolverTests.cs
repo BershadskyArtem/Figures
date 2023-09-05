@@ -5,7 +5,7 @@ namespace Figures.Tests.FiguresSolver;
 
 public class FiguresSolverTests
 {
-    private readonly Core.Logic.Extensions.FiguresSolver _sut = new();
+    private readonly Core.Logic.Solver.FiguresSolver _sut = new();
 
     [Theory]
     [InlineData(1.0)]
