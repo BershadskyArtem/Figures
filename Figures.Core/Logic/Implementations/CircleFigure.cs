@@ -11,7 +11,7 @@ public class CircleFigure : IFigure
     {
         if (radius < 0)
             throw new ArgumentException("Radius cannot be less then zero");
-        
+
         _radius = radius;
     }
 
